@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+        <div>
+                This is the header of my local site. The OmniDesk iFrame start below this line...
+        </div>
+
+        <form method="post">
+                <select onchange="go(this);">
+                        <option value="">Select an action</option>
+                        <option value="http://feb055b6.ngrok.io/api_web/create_user">Create User</option>
+                        <option value="http://feb055b6.ngrok.io/api_web/update_user/144">Update User</option>
+                        <option value="http://feb055b6.ngrok.io/api_web/create_patient">Create Patient</option>
+                        <option value="http://feb055b6.ngrok.io/api_web/update_patient/144">Update Patient</option>
+                        <option value="http://feb055b6.ngrok.io/api_web/create_consultation">Create Consultation</option>
+                </select>
+        </form>
+        <hr/>
+
+        <iframe id="omnidesk" src="" width="500" height="500">
+                <p>Your browser does not support iframes.</p>
+        </iframe>
+
+        <hr />
+
+        <div>
+                The is the footer of my local site. The OmniDesk iFrame ends above this line...
+        </div>
+
+        <script>
+                function go(selectObject) {
+                        var value = selectObject.value;
+                        document.getElementById('omnidesk').src = value;
+                }
+        </script>
+</body>
+</html>
