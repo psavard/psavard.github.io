@@ -30,8 +30,24 @@
 
         <script>
                 function go(selectObject) {
-                        var value = selectObject.value;
-                        document.getElementById('omnidesk').src = value;
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', selectObject.value);
+                    xhr.onreadystatechange = handler;
+                    xhr.responseType = 'blob';
+                    xhr.setRequestHeader('x-authorization', '7528765ab79f146a3b6508e0e4b57082d5878c37');
+                    xhr.send();
+
+                    function handler() {
+                        if (this.readyState === this.DONE) {
+                            if (this.status === 200) {
+                                var data_url = URL.createObjectURL(this.response);
+                                document.getElementById('omnidesk').src = data_url;
+                            } else {
+                                console.error('Something went wrong...');
+                            }
+                        }
+                    }
                 }
         </script>
 </body>
